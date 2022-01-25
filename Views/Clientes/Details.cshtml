@@ -1,0 +1,99 @@
+﻿@model BENT1C.Grupo1.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Datos Cliente</h1>
+
+<hr />
+
+<div class="container">
+    <div class="row col-md-12 ">
+        <div class="col-md-8 list-group">
+            <div class="form-group row list-group-item">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.Dni)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Dni)
+                </div>
+            </div>
+
+            <div class="form-group row list-group-item list-group-item-secondary">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Nombre)
+                </div>
+            </div>
+
+            <div class="form-group row list-group-item">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Apellido)
+                </div>
+            </div>
+
+            <div class="form-group row list-group-item list-group-item-secondary">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.Email)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+
+            <div class="form-group row list-group-item">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Telefono)
+                </div>
+            </div>
+
+            <div class="form-group row list-group-item list-group-item-secondary">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Direccion)
+                </div>
+            </div>
+
+            <div class="form-group row list-group-item">
+                <div class="col-md-2">
+                    @Html.DisplayNameFor(model => model.FechaAlta)
+                </div>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FechaAlta)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+            <div class="d-flex justify-content-center row form-group">
+                @if ((User.IsInRole(nameof(Rol.Administrador))))
+                {
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.Id">
+                        Editar datos
+                    </a>
+                }
+                else
+                {
+                    <a class="btn btn-success" asp-controller="Clientes" asp-action="EditReducido" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
+                        Editar datos
+                    </a>
+                }
+            </div>
+
+            <div class="d-flex justify-content-center row form-group">
+                <a class="btn btn-outline-primary" asp-action="HistorialCompras" asp-route-id="@Model.Id">Ver compras</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Buscar";
+}
+
+@model IEnumerable<Producto>
+
+<div class="row form-group">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-4 form-group">
+            <div class="card box-shadow-hover h-100 product-card bg-light">
+                <div class"card-body">
+
+                    <div class="card-title center"><h5 class="mx-auto">@Html.DisplayFor(i => item.Nombre)</h5></div>
+                    <div class="text-center">
+                        <a asp-area="" asp-controller="Productos" asp-action="VerProducto" asp-route-id="@item.Id">
+                            @if (item.Foto != null)
+                            {
+                                <img class="img-thumbnail rounded" src="@item.Foto" alt="" style="width:200px;height:200px;">
+                            }
+                            else
+                            {
+                                <img class="img-thumbnail rounded" src="/img/caja.jpg" alt="" style="width:200px;height:200px;">
+                            }
+                        </a>
+
+                        <br /><br />
+
+                        <span class="font-weight-bold ">
+                            $ @Html.DisplayFor(i => item.PrecioVigente)
+                        </span>
+
+                        <br /><br />
+
+                        <form asp-controller="Carritos" asp-action="AgregarProducto">
+                            <input type="hidden" name="productoId" value="@item.Id" />
+                            <input type="hidden" name="cantidad" value="1">
+
+                            @if (item.Activo != false && User.Identity.IsAuthenticated)
+                            {
+                                <input type="submit" value="Agregar al carrito" class="btn btn-outline-primary" />
+                            }
+                            else if (item.Activo == false)
+                            {
+                                <div class="alert-danger card">
+                                    <h6 class="card-header text-uppercase text-center">Publicacion pausada</h6>
+                                </div>
+                            }
+                            else if (!User.Identity.IsAuthenticated)
+                            {
+                                <input title="Debe estar logueado en el sistema" type="submit" value="Agregar al carrito" class="btn btn-outline-primary" disabled />
+                            }
+
+                        </form>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

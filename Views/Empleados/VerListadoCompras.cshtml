@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BENT1C.Grupo1.Models.Compra>
+
+@{
+    ViewData["Title"] = "Index";
+    var i = 0;
+}
+
+<h1>Lista de Compras Mensuales</h1>
+
+<hr />
+
+<div class="lista-compras">
+    @foreach (var compra in Model)
+    {
+        i++;
+
+
+        <div id="accordion">
+            <div class="card form-group">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link col-lg-12 collapsed" data-toggle="collapse" data-target="#lista_@i" aria-expanded="false" aria-controls="collapseOne_@i">
+                            <div class="float-left">
+                                <h5>Cliente: @Html.DisplayFor(c => compra.Cliente.Nombre) @Html.DisplayFor(c => compra.Cliente.Apellido)</h5>
+                            </div>
+                            <div class="float-right">
+                                <h5>Total: $@Html.DisplayFor(c => compra.Total) </h5>
+                            </div>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="lista_@i" class="collapse" aria-labelledby="headingOne_@i">
+                    <div class="card-body">
+                        <div>
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in compra.Carrito.CarritoItems)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(p => item.Producto.Nombre)</td>
+                                        <td>@Html.DisplayFor(p => item.Cantidad)</td>
+                                        <td>@Html.DisplayFor(p => item.Producto.PrecioVigente)</td>
+                                    </tr>
+
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+    

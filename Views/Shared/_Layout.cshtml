@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BENT1C.Grupo1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
+            <div class="container">
+
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BENT1C.Grupo1</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                @if (!User.IsInRole(nameof(Rol.Administrador)))
+                {
+                    <form asp-action="Buscar" asp-controller="Productos" method="get" novalidate="novalidate">
+                        <div class="d-flex bd-highlight">
+                            <div class="p-2 flex-fill bd-highlight">
+                                <input type="text" class="form-control search-input" name="nombre" placeholder="Nombre del producto" value="@ViewBag.Nombre">
+                            </div>
+                            <div class="p-2 flex-fill bd-highlight">
+                                <select class="form-control search-input" name="categoriaId" asp-items="ViewBag.Categorias">
+                                    <option value="">Elija una Categoría</option>
+                                </select>
+                            </div>
+                            <div class="p-2 flex-fill bd-highlight">
+                                <button type="submit" class="btn btn-info search-button">
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                }
+
+                <div class="collapse navbar-collapse md-8" id="navbarSupportedContent">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (User.IsInRole(nameof(Rol.Administrador)))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="VerListadoCompras">Listar compras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AdminReducido">Administrar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Create">Dar de alta emplado</a>
+                            </li>
+
+                        }
+
+                    </ul>
+
+                    <div class="float-right">
+                        <ul class="navbar-nav mr-auto">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="menuOpciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @User.FindFirstValue(ClaimTypes.GivenName)<span class="caret ml-1"></span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="menuOpciones">
+                                        @if (User.IsInRole(nameof(Rol.Cliente)))
+                                        {
+                                            <a class="dropdown-item" asp-controller="Clientes" asp-action="Details" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
+                                                Mis Datos
+                                            </a>
+                                            <a class="dropdown-item" asp-controller="Clientes" asp-action="HistorialCompras" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
+                                                Mis compras
+                                            </a>
+                                        }
+                                        else if (User.IsInRole(nameof(Rol.Administrador)))
+                                        {
+                                            <a class="dropdown-item" asp-controller="Empleados" asp-action="Details" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
+                                                Mis Datos
+                                            </a>
+                                        }
+
+                                        <div class="dropdown-divider"></div>
+
+                                        <form id="logoutForm" method="post" asp-controller="Accesos" asp-action="Salir">
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="fas fa-sign-out-alt"></i> Salir
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+
+                                @if (User.IsInRole(nameof(Rol.Cliente)))
+                                {
+                                    <li class="d-flex">
+                                        <a title="Carrito" class="nav-cart nav-cart-empty" id="nav-cart" tabindex="9" asp-controller="Carritos" asp-action="MiCarrito">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="nav-icon-cart-quantity"></span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="ml-1">
+                                    <a asp-controller="Accesos" asp-action="Ingresar" class="btn btn-success">
+                                        Ingresar
+                                    </a>
+                                </li>
+                                <li class=" nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Clientes" asp-action="Create">Creá tu cuenta</a>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - BENT1C.Grupo1
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

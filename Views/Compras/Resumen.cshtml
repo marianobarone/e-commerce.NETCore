@@ -1,0 +1,100 @@
+﻿@model BENT1C.Grupo1.Models.Compra
+
+@{
+    ViewData["Title"] = "Resumen de Compra";
+}
+
+
+
+
+<h1>Resumen de compra</h1>
+
+<table class="table table-responsive table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th class="col-md-6">Producto</th>
+            <th class="col-md-2">Precio</th>
+            <th class="col-md-2">Cantidad</th>
+            <th class="col-md-2">SubTotal</th>
+        </tr>
+    </thead>
+
+    @foreach (var p in Model.Carrito.CarritoItems)
+    {
+
+        <tr>
+            <td>@Html.DisplayFor(model => p.Producto.Nombre)</td>
+
+            <td>$@Html.DisplayFor(model => p.Producto.PrecioVigente)</td>
+
+            <td>@Html.DisplayFor(model => p.Cantidad)</td>
+
+            <td>$@Html.DisplayFor(model => p.SubTotal)</td>
+        </tr>
+    }
+
+    <tr class="table-info">
+        <td colspan="4" class="font-weight-bold">Total de la compra: $@Html.DisplayFor(model => Model.Carrito.Subtotal)</td>
+    </tr>
+</table>
+
+<div class="col-md-6 mx-auto">
+    <div class="card ">
+        <div class="card-header">
+            <h5 class="text-center">Detalles de retiro</h5>
+        </div>
+
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-md-4 col-form-label font-weight-bold">ID de Compra:</label>
+                <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="@Html.DisplayFor(model => model.Id)">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-md-4 col-form-label font-weight-bold">Sucursal:</label>
+                <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="@ViewBag.Sucursal.Nombre">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-md-4 col-form-label font-weight-bold">Direccion:</label>
+                <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="@ViewBag.Sucursal.Direccion">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-md-4 col-form-label font-weight-bold">Telefono:</label>
+                <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="@ViewBag.Sucursal.Telefono">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-md-4 col-form-label font-weight-bold">Email:</label>
+                <div class="col-md-8">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="@ViewBag.Sucursal.Email">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="col-md-4">
+    <a asp-controller="Home" asp-action="" class="btn btn-success">Seguir Comprando</a>
+</div>*@
+
+<div class="form-row d-flex justify-content-center m-4">
+    <div class="form-group col-md-4 text-center">
+        <a asp-controller="Home" asp-action="" class="btn btn-success">Seguir Comprando</a>
+    </div>
+</div>
+
+
+
+
+
+

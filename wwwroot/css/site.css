@@ -1,0 +1,276 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    padding-top: 7.5rem;
+    margin-bottom: 60px;
+    background-color: #f9f9f9;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.formSpace {
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    display: flex;
+    margin: 0 auto;
+}
+
+.list-group-item {
+    display: flex;
+}
+
+.center {
+    text-align: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    cursor: not-allowed;
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
+
+.hidden {
+    visibility: hidden;
+    transition: 1s ease-in-out;
+}
+
+.hidden {
+    visibility: hidden;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.product-card:hover .hidden {
+    visibility: visible;
+    transition: 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.box-shadow-hover:hover {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/******************************/
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.number-input {
+    border: 2px solid #ddd;
+    display: inline-flex;
+}
+
+    .number-input,
+    .number-input * {
+        box-sizing: border-box;
+    }
+
+        .number-input button {
+            outline: none;
+            -webkit-appearance: none;
+            background-color: transparent;
+            border: none;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            margin: 0;
+            position: relative;
+        }
+
+.data-quantity {
+    position: relative;
+    width: 50%;
+    /*max-width: 11rem;*/
+    padding: 0;
+    margin: 10px 0;
+    border: 0;
+    border-radius: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 65px -10px rgba(0,0,0,.25);
+}
+
+    .data-quantity input {
+        font-size: 18px;
+        /*height: 4rem;
+    padding: 0 4rem;*/
+        border-radius: 2rem;
+        border: 0;
+        background: #fff;
+        color: #222;
+        /*box-shadow: 0 10px 65px -10px rgba(0,0,0,.25);*/
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        font-weight: lighter;
+    }
+
+    /*.data-quantity button:active {
+        background-position-y: 1px;
+        box-shadow: inset 0 2px 12px -4px #c5d1d9;
+    }*/
+
+    .data-quantity button {
+        /*position: absolute;*/
+        /*width: 2.8rem;*/
+        height: 2.8rem;
+        /*top: .6rem;*/
+        display: block;
+        padding: 0;
+        margin: 0px 20px;
+        border: 0;
+        /*background: #fff url(data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iNTAiPjxwYXRoIGQ9Ik0xNyAyNWgxNk02NyAyNWgxNk03NSAxN3YxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2IoNTksNjksNjYpIiBzdHJva2Utd2lkdGg9IjEuNXB4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+PC9zdmc+) no-repeat 0 0;
+  background-size: 5.6rem 2.8rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;*/
+        border-radius: 1.4rem;
+        cursor: pointer;
+        transition: opacity .15s;
+        opacity: .5;
+    }
+
+        .data-quantity button:hover {
+            opacity: 1;
+        }
+
+    .data-quantity input:focus {
+        outline: none;
+    }
+
+    .data-quantity:focus {
+        outline: none;
+        box-shadow: 0 5px 55px -10px rgba(0,0,0,.2), 0 0 4px #3fb0ff;
+    }
+
+/*****************************/
+
+.cart-count {
+    /*background: #606060 none repeat scroll 0 0;*/
+    background-color: red;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 12px;
+    height: 18px;
+    position: absolute;
+    /*right: 6px;*/
+    right: 155px;
+    text-align: center;
+    width: 18px;
+    top: 12px;
+}
+
+#nav-cart{
+    margin:auto;
+}
+
+.carousel{
+    margin-top: -50px;
+}
+
+.noAutorizado {
+    background-color: #464646;
+}
+
+.noAutorizado h1 {
+    color: white;
+}
+
+.fa-exclamation-triangle {
+    color: #da4c4c;
+}
+
+.btn-link:hover {
+    text-decoration:none;
+}
+
+.cantidad {
+    font-size: 18px;
+}
+
+.lista-compras {
+    max-height: 700px;
+    overflow: auto;
+}

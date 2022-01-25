@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\ORT\\2do CUATRIMESTRE - 2020\\06 - PROGRAMACION EN NUEVAS TECNOLOGIAS 1\\TRABAJO FINAL\\2020-2-BENT1C-1\\BENT1C.Grupo1\\BENT1C.Grupo1.csproj": {}
+  },
+  "projects": {
+    "F:\\ORT\\2do CUATRIMESTRE - 2020\\06 - PROGRAMACION EN NUEVAS TECNOLOGIAS 1\\TRABAJO FINAL\\2020-2-BENT1C-1\\BENT1C.Grupo1\\BENT1C.Grupo1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\ORT\\2do CUATRIMESTRE - 2020\\06 - PROGRAMACION EN NUEVAS TECNOLOGIAS 1\\TRABAJO FINAL\\2020-2-BENT1C-1\\BENT1C.Grupo1\\BENT1C.Grupo1.csproj",
+        "projectName": "BENT1C.Grupo1",
+        "projectPath": "F:\\ORT\\2do CUATRIMESTRE - 2020\\06 - PROGRAMACION EN NUEVAS TECNOLOGIAS 1\\TRABAJO FINAL\\2020-2-BENT1C-1\\BENT1C.Grupo1\\BENT1C.Grupo1.csproj",
+        "packagesPath": "C:\\Users\\MARIANO\\.nuget\\packages\\",
+        "outputPath": "F:\\ORT\\2do CUATRIMESTRE - 2020\\06 - PROGRAMACION EN NUEVAS TECNOLOGIAS 1\\TRABAJO FINAL\\2020-2-BENT1C-1\\BENT1C.Grupo1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\MARIANO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Font.Awesome": {
+              "target": "Package",
+              "version": "[5.15.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

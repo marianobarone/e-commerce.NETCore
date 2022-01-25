@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+
+<h2>Ingresa tus datos de acceso</h2>
+
+<div class="">
+    <form asp-action="Ingresar">
+        <div class="card formSpace col-md-4">
+            <div class="text-danger">
+                @ViewBag.Error
+            </div>
+            <div class="form-group ">
+                <label laber-for="email">Email</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>                    
+                    <input name="email" type="text" class="form-control" value="@ViewBag.Email" aria-describedby="emailHelp" placeholder="Ingrese su email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label laber-for="password">Password</label>                            
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <input name="password" type="password" class="form-control" id="" aria-describedby="emailHelp" placeholder="Ingrese su password">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" value="Login" class="btn btn-primary col-md-8">Continuar</button>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a asp-controller="Clientes" asp-action="Create" class="btn btn-outline-primary col-md-8">Creá tu cuenta</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+

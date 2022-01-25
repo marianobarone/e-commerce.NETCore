@@ -1,0 +1,175 @@
+﻿@model IEnumerable<BENT1C.Grupo1.Models.Sucursal>
+
+@{
+    ViewData["Title"] = "Index";
+
+    var id_i = 0;
+    var id_j = 0;
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Sucursales</h1>
+    </div>
+    <div class="col-md-6">
+      <a class="btn btn-success float-right form-group" asp-action="Create">Agregar Nueva Sucursal</a>
+    </div>
+</div>
+
+
+
+    @foreach (Sucursal item in Model)
+    {
+        id_i++;
+
+        <div class="col-lg-12 list-group">
+
+            <div id="accordion">
+                <div class="card form-group">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#sucursal_@id_i" aria-expanded="false" aria-controls="collapseOne_@id_i">
+                                <h5> @Html.DisplayFor(modelItem => item.Nombre) </h5>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="sucursal_@id_i" class="collapse" aria-labelledby="headingOne_@id_i">
+
+                        <div class="form-group list-group-item list-group-item-secondary">
+                            <div class="col-md-2">
+                                @Html.DisplayNameFor(modelItem => item.Direccion)
+                            </div>
+                            <div class="col-md-10">
+                                @Html.DisplayFor(modelItem => item.Direccion)
+                            </div>
+                        </div>
+
+                        <div class="form-group list-group-item">
+                            <div class="col-md-2">
+                                @Html.DisplayNameFor(modelItem => item.Telefono)
+                            </div>
+                            <div class="col-md-10">
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </div>
+                        </div>
+
+                        <div class="form-group list-group-item list-group-item-secondary">
+                            <div class="col-md-2">
+                                @Html.DisplayNameFor(modelItem => item.Email)
+                            </div>
+                            <div class="col-md-10">
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group list-group-item">
+                            <div id="accordion" class="col-lg-12">
+                                <div class="">
+                                    <div class="row" id="headingOne">
+                                        <div class="col-md-6 d-flex align-items-center">
+                                            <button class="btn btn-outline-secondary" data-toggle="collapse" data-target="#stock_@id_i" aria-expanded="false" aria-controls="stock_@id_i">
+                                                Ver Stock
+                                            </button>
+                                        </div>
+
+                                        <div class="col-md-6 float-right d-flex justify-content-end">
+
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning m-1">Editar</a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger m-1">Borrar</a>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="stock_@id_i" class="collapse mt-3" aria-labelledby="headingOne_@id_i">
+
+                                        <div>
+                                            <table class="table table-striped">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th class="align-middle">Producto</th>
+                                                        <th class="align-middle">Cantidad</th>
+                                                        <th class="align-middle">
+                                                            <a class="btn btn-success float-right" asp-controller="StockItems" asp-action="Create" asp-route-id="">Agregar Nuevo Stock</a>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (StockItem stock in item.StockItems)
+                                                    {
+                                                        id_j++;
+                                                        <tr>
+                                                            <td colspan="1" class="align-middle">@Html.DisplayFor(model => stock.Producto.Nombre)</td>
+                                                            @*<td class="align-middle">@Html.DisplayFor(model => item.Cantidad)</td>*@
+
+
+
+                                                            <td colspan="2">
+
+                                                                <form asp-controller="StockItems" asp-action="Edit">
+
+                                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                    <input type="hidden" value="@stock.Id" name="Id" />
+
+                                                                    <div class="row">
+                                                                        <div class="form-inline">
+
+                                                                            @*<input value="@stock.Cantidad" name="Cantidad" class="form-control" />*@
+
+
+                                                                            <input value="@stock.SucursalId" type="hidden" name="SucursalId" />
+
+
+                                                                            <input value="@stock.ProductoId" type="hidden" name="ProductoId" />
+                                                                        </div>
+
+                                                                        <div class="input-group col-md-6">
+                                                                            <div class="input-group-prepend">
+                                                                                <button onclick="disminuirCantProducto(@id_j)" type="button" class="btn btn-secondary">
+                                                                                    <i class="fas fa-minus"></i>
+                                                                                </button>
+                                                                            </div>
+
+                                                                            <input class="form-control quantity text-center col-lg-5 col-md-5 col-xs-5 col-5" type="number" value="@stock.Cantidad" id="@id_j" name="Cantidad">
+
+                                                                            <div class="input-group-append">
+                                                                                <button onclick="aumentarCantProducto(@id_j)" type="button" class="btn btn-secondary">
+                                                                                    <i class="fas fa-plus"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-inline col-md-6">
+                                                                            <div class="col form-inline d-flex justify-content-end">
+                                                                                <input type="submit" value="Modificar Stock" class="btn btn-primary" />
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                </form>
+
+                                                            </td>
+
+
+
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    }

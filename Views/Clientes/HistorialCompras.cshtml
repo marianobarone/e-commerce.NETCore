@@ -1,0 +1,56 @@
+﻿@model BENT1C.Grupo1.Models.Cliente
+
+@{
+    ViewData["Title"] = "Historial";
+}
+
+<h1>Historial de Compras</h1>
+
+<hr />
+
+<div class="container">
+
+
+    @if ((Model.Compras.Count) == 0)
+    {
+        <div class="text-center">
+            <h2>Aún no se registraron compras</h2>
+        </div>
+    }
+    else
+    {
+        @foreach (var item in Model.Compras)
+        {
+            <table class="table table-responsive table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="col-md-6">Producto</th>
+                        <th class="col-md-2">Precio</th>
+                        <th class="col-md-2">Cantidad</th>
+                        <th class="col-md-2">SubTotal</th>
+                    </tr>
+                </thead>
+                @foreach (var p in item.Carrito.CarritoItems)
+                {
+
+                    <tr>
+                        <td>@Html.DisplayFor(model => p.Producto.Nombre)</td>
+
+                        <td>$@Html.DisplayFor(model => p.Producto.PrecioVigente)</td>
+
+                        <td>@Html.DisplayFor(model => p.Cantidad)</td>
+
+                        <td>$@Html.DisplayFor(model => p.SubTotal)</td>
+                    </tr>
+                }
+                <tr class="table-info">
+                    <td colspan="4" class="font-weight-bold">Total de la compra: $@Html.DisplayFor(model => item.Total)</td>                    
+                </tr>
+
+
+            </table>
+        }
+
+    }
+
+</div>
